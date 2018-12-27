@@ -25,29 +25,8 @@ public class App extends BaseApplication {
             refWatcher = LeakCanary.install(this);
         }
 
+
     }
-
-    /**
-     * 初始化内存泄漏
-     */
-    private RefWatcher setupLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return RefWatcher.DISABLED;
-        }
-        return LeakCanary.install(this);
-    }
-
-    /**
-     * Activity关闭时查看是否有内存泄漏得地方
-     * @param context
-     * @return
-     */
-    public static RefWatcher getRefWatcher(Context context) {
-        App leakApplication = (App) context.getApplicationContext();
-        return leakApplication.refWatcher;
-    }
-
-
     private void initCrash() {
         CaocConfig.Builder.create()
                 .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //背景模式,开启沉浸式

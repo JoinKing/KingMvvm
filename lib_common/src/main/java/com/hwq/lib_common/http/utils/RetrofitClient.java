@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 import okhttp3.Cache;
@@ -39,6 +40,7 @@ public class RetrofitClient {
     private static final int DEFAULT_TIMEOUT = 10;
     //缓存时间
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
+    private static final long RETRY_COUNT = 3;//重连次数
     //服务端根路径
 //    public static String baseUrl = "http://47.105.149.12:9090";
     public static String baseUrl = "http://192.168.200.188:9090";
@@ -141,5 +143,18 @@ public class RetrofitClient {
                 .subscribe(subscriber);
 
         return null;
+    }
+
+    /**
+     * 设置订阅 和 所在的线程环境
+     */
+    public <T> void toSubscribe(Observable<T> o, DisposableObserver<T> s) {
+
+        o.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .retry(RETRY_COUNT)//请求失败重连次数
+                .subscribe(s);
+
     }
 }

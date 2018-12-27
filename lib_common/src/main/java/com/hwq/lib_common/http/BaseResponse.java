@@ -1,10 +1,12 @@
 package com.hwq.lib_common.http;
 
+import java.io.Serializable;
+
 /**
  * Created by king on 2018.12.21
  * 该类仅供参考，实际业务返回的固定字段, 根据需求来定义，
  */
-public class BaseResponse<T> {
+public class BaseResponse<T> implements Serializable{
     private int code;
     private String msg;
     private T data;

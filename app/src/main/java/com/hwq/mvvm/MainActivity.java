@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import com.hwq.lib_common.base.BaseActivity;
 import com.hwq.mvvm.databinding.ActivityMainBinding;
+import com.hwq.mvvm.main.App;
 import com.hwq.mvvm.main.LoginManager;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding,MainVM> {
@@ -41,4 +42,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding,MainVM> {
         return BR.mainVM;
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
