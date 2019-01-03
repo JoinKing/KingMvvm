@@ -42,8 +42,8 @@ public class RetrofitClient {
     private static final int CACHE_TIMEOUT = 10 * 1024 * 1024;
     private static final long RETRY_COUNT = 3;//重连次数
     //服务端根路径
-//    public static String baseUrl = "http://47.105.149.12:9090";
-    public static String baseUrl = "http://192.168.200.188:9090";
+    public static String baseUrl = "http://47.105.149.12:9090";
+//    public static String baseUrl = "http://192.168.200.188:9090";
 
     private static Context mContext = Utils.getContext();
 
@@ -136,13 +136,12 @@ public class RetrofitClient {
      * * @param subscriber
      */
 
-    public static <T> T execute(Observable<T> observable, Observer<T> subscriber) {
+    public static <T> void execute(Observable<T> observable, Observer<T> subscriber) {
         observable.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
 
-        return null;
     }
 
     /**

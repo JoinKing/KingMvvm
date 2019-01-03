@@ -1,6 +1,8 @@
 package com.hwq.mvvm;
 
 import android.app.Application;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleOwner;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
@@ -70,69 +72,78 @@ public class MainVM extends BaseViewModel {
                 KLog.e("accept:onComplete");
             }
         });
-        MovieSubscribe.getText(new DisposableObserver<BaseResponse<StrBean>>() {
-            @Override
-            public void onNext(BaseResponse<StrBean> response) {
-                text.set(response.getResult().toString());
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
+//        MovieSubscribe.getText(new DisposableObserver<BaseResponse<StrBean>>() {
+//            @Override
+//            public void onNext(BaseResponse<StrBean> response) {
+//                text.set(response.getResult().toString());
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                KLog.e("accept:onComplete"+e.getMessage());
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
 
 
         /**
          * 请求二
          */
-        Map<String, String> map = new HashMap<>();
-        map.put("phone", "17688831088");
-        map.put("psd", "Aa1234");
+//        Map<String, String> map = new HashMap<>();
+//        map.put("phone", "17688831088");
+//        map.put("psd", "Aa1234");
+//        RetrofitClient.getInstance()
+//                .create(ApiService.class)
+//                .getLogin(map)
+//                .compose(RxUtils.bindToLifecycle(getLifecycleProvider())) // 请求与View周期同步
+//                .compose(RxUtils.schedulersTransformer())  // 线程调度
+//                .compose(RxUtils.exceptionTransformer())   // 网络错误的异常转换
+//                .subscribe(new Consumer<BaseResponse<LoginModel>>() {
+//
+//                    @Override
+//                    public void accept(BaseResponse<LoginModel> response) throws Exception {
+//                        text.set(response.getResult().toString());
+//
+//                    }
+//                }, new Consumer<ResponseThrowable>() {
+//                    @Override
+//                    public void accept(ResponseThrowable throwable) throws Exception {
+//
+//                    }
+//                });
         RetrofitClient.getInstance()
                 .create(ApiService.class)
-                .getLogin(map)
+                .getText()
                 .compose(RxUtils.bindToLifecycle(getLifecycleProvider())) // 请求与View周期同步
                 .compose(RxUtils.schedulersTransformer())  // 线程调度
                 .compose(RxUtils.exceptionTransformer())   // 网络错误的异常转换
-                .subscribe(new Consumer<BaseResponse<LoginModel>>() {
-
+                .subscribe(new Consumer<BaseResponse<StrBean>>() {
                     @Override
-                    public void accept(BaseResponse<LoginModel> response) throws Exception {
+                    public void accept(BaseResponse<StrBean> response) throws Exception {
+                        KLog.e("accept",response.getResult().getXxxx());
                         text.set(response.getResult().toString());
 
                     }
                 }, new Consumer<ResponseThrowable>() {
                     @Override
                     public void accept(ResponseThrowable throwable) throws Exception {
+                        KLog.e("accept1",throwable.getMessage());
+                        KLog.e("accept1",throwable.message);
 
                     }
                 });
-//        RetrofitClient.getInstance()
-//                .create(ApiService.class)
-//                .getText()
-//                .compose(RxUtils.bindToLifecycle(getLifecycleProvider())) // 请求与View周期同步
-//                .compose(RxUtils.schedulersTransformer())  // 线程调度
-//                .compose(RxUtils.exceptionTransformer())   // 网络错误的异常转换
-//                .subscribe(new Consumer<BaseResponse<StrBean>>() {
-//                    @Override
-//                    public void accept(BaseResponse<StrBean> response) throws Exception {
-//                        KLog.e("accept",response.getResult().getXxxx());
-//                        text.set(response.getResult().getXxxx());
-//
-//                    }
-//                }, new Consumer<ResponseThrowable>() {
-//                    @Override
-//                    public void accept(ResponseThrowable throwable) throws Exception {
-//                        KLog.e("accept1",throwable.getMessage());
-//                        KLog.e("accept1",throwable.message);
-//
-//                    }
-//                });
     }
+
+    @Override
+    public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
+        super.onAny(owner, event);
+        KLog.e("onAny");
+
+    }
+
 }

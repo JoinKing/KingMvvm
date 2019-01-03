@@ -4,6 +4,7 @@ package com.hwq.mvvm.api;
 
 import com.hwq.lib_common.http.BaseResponse;
 import com.hwq.lib_common.http.utils.RetrofitClient;
+import com.hwq.lib_common.utils.RxUtils;
 import com.hwq.mvvm.api.ApiService;
 import com.hwq.mvvm.bean.LoginModel;
 import com.hwq.mvvm.bean.StrBean;
@@ -15,7 +16,7 @@ import io.reactivex.Observable;
 import io.reactivex.observers.DisposableObserver;
 
 /**
- * Created by 眼神 on 2018/3/27.
+ *
  * 建议：把功能模块来分别存放不同的请求方法，比如登录注册类LoginSubscribe、电影类MovieSubscribe
  */
 
