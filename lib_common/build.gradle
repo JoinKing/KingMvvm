@@ -1,10 +1,7 @@
 apply plugin: 'com.android.library'
-
+apply from: "maven.gradle"
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-
-
-
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
@@ -81,4 +78,5 @@ dependencies {
     api rootProject.ext.dependencies.wechat
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
     implementation files('libs/open_sdk_r6008_lite.jar')
+    implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1310_43612_sharewithdownload_withoutGame_obfs_20180706_163319.jar')
 }

@@ -23,6 +23,30 @@
     <attr name="isThrottleFirst" format="boolean" />
     <attr name="currentView" format="reference" />
     <!-- require boolean value to decide whether requestFocus for view. -->
+    <!--刷新控件属性-->
+    <declare-styleable name="RefreshLayout">
+        <attr name="tr_max_head_height" format="dimension"/>
+        <attr name="tr_head_height" format="dimension"/>
+        <attr name="tr_max_bottom_height" format="dimension"/>
+        <attr name="tr_bottom_height" format="dimension"/>
+        <attr name="tr_overscroll_height" format="dimension"/>
+        <attr name="tr_enable_refresh" format="boolean"/>
+        <attr name="tr_enable_loadmore" format="boolean"/>
+        <attr name="tr_pureScrollMode_on" format="boolean"/>
+        <attr name="tr_overscroll_top_show" format="boolean"/>
+        <attr name="tr_overscroll_bottom_show" format="boolean"/>
+        <attr name="tr_enable_overscroll" format="boolean"/>
+        <attr name="tr_headerView" format="dimension"/>
+        <attr name="tr_bottomView" format="dimension"/>
+        <attr name="tr_floatRefresh" format="boolean"/>
+        <attr name="tr_autoLoadMore" format="boolean"/>
+        <attr name="tr_enable_keepIView" format="boolean"/>
+        <attr name="tr_showRefreshingWhenOverScroll" format="boolean"/>
+        <attr name="tr_showLoadingWhenOverScroll" format="boolean"/>
+    </declare-styleable>
+
+    <!--binding-->
+
     <declare-styleable name="View">
         <!-- require BindingCommand {@link com.kelin.mvvmlight.command.BindingCommand } to deal with view click event. -->
         <attr name="onClickCommand" />
@@ -155,6 +179,7 @@
     <declare-styleable name="WebView">
         <!-- require String render to html show in webview-->
         <attr name="render" format="string" />
+        <attr name="load_url" format="string" />
     </declare-styleable>
     <!-- 自定义控制事件分发的LinearLayout -->
     <declare-styleable name="ControlDistributeLinearLayout">

@@ -28,9 +28,9 @@
 #实体类不参与混淆
 -keep class com.hwq.lib_common.entity.** { *; }
 
-#tkrefreshlayout
--keep class com.lcodecore.tkrefreshlayout.** { *; }
--dontwarn com.lcodecore.tkrefreshlayout.**
+#refreshlayout刷新
+-keep class com.hwq.lib_common.widget.refreshlayout.** { *; }
+-dontwarn com.hwq.lib_common.widget.refreshlayout.**
 
 #-------------------------------------------MVVMHabit混淆规则----------------------------------------------
 #---------------------------------1.实体类---------------------------------

@@ -8,6 +8,7 @@ ext {
             targetSdkVersion : 27,
             versionCode      : 1,
             versionName      : "1.0",
+            testInstrumentationRunner      : "android.support.test.runner.AndroidJUnitRunner",
     ]
     //version配置
     versions = [
@@ -63,6 +64,9 @@ ext {
             //内存溢出检测
             "leakcanary-android"                   : "com.squareup.leakcanary:leakcanary-android:1.6.1",
             "leakcanary-android-no-op"             : "com.squareup.leakcanary:leakcanary-android-no-op:1.5",
+            //微信支付
+            "wechat"             : "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+",
+
     ]
 }
 

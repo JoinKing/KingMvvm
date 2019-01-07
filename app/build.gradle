@@ -35,4 +35,6 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["leakcanary-android"]
     releaseImplementation rootProject.ext.dependencies["leakcanary-android"]
     testImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+
+    api 'com.lcodecorex:tkrefreshlayout:1.0.3'
 }
