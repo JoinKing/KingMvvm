@@ -1,8 +1,7 @@
 package com.hwq.lib_common.binding.command;
 
 /**
- * A one-argument action.
- *
+ * Created by king on 2019.1.11 *
  * @param <T> the first argument type
  */
 public interface BindingConsumer<T> {

@@ -11,6 +11,6 @@ public class LogUtil {
 
     public static void i(String msg) {
         if (!DEBUG) return;
-        Log.i("TwinklingRefreshLayout", msg);
+        Log.i("RefreshLayout", msg);
     }
 }

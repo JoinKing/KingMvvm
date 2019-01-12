@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="liveVM"
+            type="com.hwq.mvvm.live.LiveViewModel"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".live.liveActivity">
+
+        <TextView
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:id="@+id/login"
+            android:gravity="center"
+            android:text="登陆"
+            android:textSize="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:paddingLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="#f3f3f3"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:text="@={liveVM.userName}"
+            android:layout_marginTop="50dp"
+            android:hint="请输入用户名"
+            android:id="@+id/username"
+            app:layout_constraintTop_toBottomOf="@id/login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:paddingLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="#f3f3f3"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:text="@={liveVM.groopName}"
+            android:hint="请输入组名称"
+            android:layout_marginTop="10dp"
+            android:id="@+id/group"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            app:onClickCommand="@{liveVM.commandLogin}"
+            android:background="@color/colorPrimary"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="登陆"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

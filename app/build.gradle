@@ -20,6 +20,18 @@ android {
     dataBinding {
         enabled = true
     }
+
+    android {
+        lintOptions {
+            disable 'CheckResult'
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -31,10 +43,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':lib_common')
 
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+
+    api(name: 'fsp_sdk', ext: 'aar')
+//    api(name: 'app_neutral', ext: 'aar')
+
     //内存溢出检测
     debugImplementation rootProject.ext.dependencies["leakcanary-android"]
     releaseImplementation rootProject.ext.dependencies["leakcanary-android"]
     testImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
 
-    api 'com.lcodecorex:tkrefreshlayout:1.0.3'
 }

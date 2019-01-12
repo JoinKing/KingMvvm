@@ -118,8 +118,8 @@ public class WxShareUtils {
      */
     public static boolean judgeCanGo(Context context){
         if (null==api){
-            Toast.makeText(context, "请初始化", Toast.LENGTH_SHORT).show();
-            return false;
+            Toast.makeText(context, "Please initialize WeChat", Toast.LENGTH_SHORT).show();
+            throw  new NullPointerException("Please initialize WeChat");
         }
         if (!api.isWXAppInstalled()) {
             Toast.makeText(context, "请先安装微信应用", Toast.LENGTH_SHORT).show();

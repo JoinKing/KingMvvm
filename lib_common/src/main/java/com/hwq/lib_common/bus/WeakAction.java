@@ -2,11 +2,7 @@ package com.hwq.lib_common.bus;
 
 import com.hwq.lib_common.binding.command.BindingAction;
 import com.hwq.lib_common.binding.command.BindingConsumer;
-
 import java.lang.ref.WeakReference;
-
-
-
 
 /**
  * About : kelin的WeakBindingAction

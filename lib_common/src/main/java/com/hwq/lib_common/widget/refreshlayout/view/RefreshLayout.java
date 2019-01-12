@@ -196,7 +196,7 @@ public class RefreshLayout extends RelativeLayout implements PullListener, Neste
                     Constructor ct = headClazz.getDeclaredConstructor(Context.class);
                     setHeaderView((IHeaderView) ct.newInstance(getContext()));
                 } catch (Exception e) {
-                    Log.e("TwinklingRefreshLayout:", "setDefaultHeader classname=" + e.getMessage());
+                    Log.e("RefreshLayout:", "setDefaultHeader classname=" + e.getMessage());
                     setHeaderView(new GoogleDotView(getContext()));
                 }
             } else {
@@ -221,7 +221,7 @@ public class RefreshLayout extends RelativeLayout implements PullListener, Neste
                     Constructor ct = clazz.getDeclaredConstructor(Context.class);
                     setBottomView((IBottomView) ct.newInstance(getContext()));
                 } catch (Exception e) {
-                    Log.e("TwinklingRefreshLayout:", "setDefaultFooter classname=" + e.getMessage());
+                    Log.e("RefreshLayout:", "setDefaultFooter classname=" + e.getMessage());
                     setBottomView(new BallPulseView(getContext()));
                 }
             } else {
@@ -457,7 +457,7 @@ public class RefreshLayout extends RelativeLayout implements PullListener, Neste
             case MotionEvent.ACTION_MOVE:
                 final int index = e.findPointerIndex(mActivePointerId);
                 if (index < 0) {
-                    Log.e("TwinklingRefreshLayout", "Error processing scroll; pointer index for id " +
+                    Log.e("RefreshLayout", "Error processing scroll; pointer index for id " +
                             mActivePointerId + " not found. Did any MotionEvents get skipped?");
                     return false;
                 }

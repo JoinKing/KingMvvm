@@ -87,6 +87,7 @@ public class MaterialDialogUtils {
                 .progressIndeterminateStyle(horizontal)
                 .canceledOnTouchOutside(false)
                 .backgroundColorRes(R.color.white)
+                .backgroundColor(context.getResources().getColor(R.color.white))
                 .keyListener(new DialogInterface.OnKeyListener() {
                     @Override
                     public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {

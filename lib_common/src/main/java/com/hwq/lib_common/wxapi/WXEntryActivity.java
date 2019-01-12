@@ -6,7 +6,11 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
-import com.hwq.lib_common.utils.Configer;
+import com.hwq.lib_common.bus.RxBus;
+import com.hwq.lib_common.http.utils.RetrofitClient;
+import com.hwq.lib_common.wxapi.api.WxSubscribe;
+import com.hwq.lib_common.wxapi.entity.WxInfoBean;
+import com.hwq.lib_common.wxapi.entity.WxTokenBean;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -14,23 +18,23 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import java.util.HashMap;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 
-
     private IWXAPI iwxapi;
-
     private SendAuth.Resp resp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getSupportActionBar().hide();
-        // 隐藏状态栏
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        iwxapi = WXAPIFactory.createWXAPI(this, Configer.APP_ID, true);
+        iwxapi = WXAPIFactory.createWXAPI(this, RetrofitClient.APP_ID, true);
         //接收到分享以及登录的intent传递handleIntent方法，处理结果
         iwxapi.handleIntent(getIntent(), this);
 
@@ -41,8 +45,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     public void onReq(BaseReq baseReq) {
     }
 
-
-    //请求回调结果处理
     @Override
     public void onResp(BaseResp baseResp) {
         //微信登录为getType为1，分享为0
@@ -85,42 +87,61 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     }
 
     private void getUserInfo(String code) {
-        String http = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Configer.APP_ID + "&secret=" + Configer.APP_SERECET + "&code=" + code + "&grant_type=authorization_code";
-//        OkHttpUtils.get()
-//                .url(http)
-//                .build()
-//                .execute(new GenericsCallback<WxTokenBean>(new JsonGenericsSerializator()) {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(WxTokenBean response, int id) {
-//                        //获取个人信息
-//                        String getUserInfo = "https://api.weixin.qq.com/sns/userinfo?access_token=" + response.getAccess_token() + "&openid=" + response.getOpenid() + "";
-//                        getAccountInfo(getUserInfo);
-//                    }
-//                });
+        HashMap<String, String> prams = new HashMap<>();
+        prams.put("appid", RetrofitClient.APP_ID);
+        prams.put("secret", RetrofitClient.APP_SERECET);
+        prams.put("code", "&grant_type=authorization_code");
+
+        WxSubscribe.getToken(prams, new Observer<WxTokenBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(WxTokenBean wxTokenBean) {
+                getAccountInfo(wxTokenBean.getAccess_token(), wxTokenBean.getOpenid());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
 
-    private void getAccountInfo(String getUserInfo) {
-//        OkHttpUtils.get()
-//                .url(getUserInfo)
-//                .build()
-//                .execute(new GenericsCallback<WxInfoBean>(new JsonGenericsSerializator()) {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(WxInfoBean response, int id) {
-//                        EventBus.getDefault().post(response);
-//                        finish();
-//                    }
-//                });
+    private void getAccountInfo(String access_token, String openid) {
+        HashMap<String, String> prams = new HashMap<>();
+        prams.put("access_token", access_token);
+        prams.put("openid", openid);
+        WxSubscribe.getInforMation(prams, new Observer<WxInfoBean>() {
+            @Override
+            public void onSubscribe(Disposable d) {
 
+            }
+
+            @Override
+            public void onNext(WxInfoBean wxInfoBean) {
+                //使用Rxbus将数据发送到登陆页面
+                //在接收的页面进行注册接收消息
+                RxBus.getDefault().post(wxInfoBean);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+                onBackPressed();
+            }
+        });
     }
 }
 

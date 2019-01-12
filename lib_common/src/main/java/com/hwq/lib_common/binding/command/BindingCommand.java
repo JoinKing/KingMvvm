@@ -2,7 +2,7 @@ package com.hwq.lib_common.binding.command;
 
 
 /**
- * About : kelin的ReplyCommand
+ * Created by king on 2019.1.11
  * 执行的命令回调, 用于ViewModel与xml之间的数据绑定
  */
 public class BindingCommand<T> {

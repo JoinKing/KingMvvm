@@ -6,11 +6,16 @@ import com.hwq.lib_common.base.BaseActivity;
 import com.hwq.mvvm.databinding.ActivityMainBinding;
 import com.hwq.mvvm.main.App;
 import com.hwq.mvvm.main.LoginManager;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding,MainVM> {
 
+
     @Override
-    public void initData() {  }
+    public void initData() {
+
+
+    }
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -28,5 +33,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding,MainVM> {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        binding.mWebView.removeAllViews();
+        binding.mWebView.destroy();
     }
 }

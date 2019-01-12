@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.hwq.lib_common.utils.Configer;
+import com.hwq.lib_common.http.utils.RetrofitClient;
 import com.hwq.lib_common.utils.Utils;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -24,8 +24,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //微信
-        api = WXAPIFactory.createWXAPI(this, Configer.APP_ID, true);
-        api.registerApp(Configer.APP_ID);
+
         setApplication(this);
         //ARouter路由
         ARouter.init(this);
@@ -80,7 +79,7 @@ public class BaseApplication extends Application {
      */
     public static Application getInstance() {
         if (sInstance == null) {
-            throw new NullPointerException("please inherit BaseApplication or call setApplication.");
+            throw new NullPointerException("please initialize BaseApplication or call setApplication.");
         }
         return sInstance;
     }

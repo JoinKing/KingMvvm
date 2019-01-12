@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="oneVm"
+            type="com.hwq.mvvm.rxbus.vm.RxbusOneViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            onClickCommand="@{oneVm.send}"
+            android:text="发送一个事件"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+        <Button
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            onClickCommand="@{oneVm.starActivity}"
+            android:text="跳转页面"
+            android:layout_marginLeft="200dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+
+        <TextView
+            android:textColor="@color/white"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:text="@{oneVm.content}"
+            android:layout_marginTop="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
+

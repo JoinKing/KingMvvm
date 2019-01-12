@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hwq.lib_common.bus.Messenger;
+import com.hwq.lib_common.utils.FixMemLeak;
 import com.hwq.lib_common.utils.MaterialDialogUtils;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
@@ -49,6 +50,8 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         viewModel.removeRxBus();
         viewModel = null;
         binding.unbind();
+        //解决华为手机输入事件引起得内存泄漏问题
+        FixMemLeak.fixLeak(getActivity());
     }
 
     @Nullable

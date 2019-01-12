@@ -9,6 +9,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hwq.lib_common.bus.Messenger;
@@ -16,6 +17,7 @@ import com.hwq.lib_common.utils.FixMemLeak;
 import com.hwq.lib_common.utils.KLog;
 import com.hwq.lib_common.utils.KeyBoardUtils;
 import com.hwq.lib_common.utils.MaterialDialogUtils;
+import com.hwq.lib_common.utils.UltimateBar;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.lang.reflect.ParameterizedType;
@@ -51,13 +53,30 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         initViewObservable();
         //注册RxBus
         viewModel.registerRxBus();
+        //沉浸式
+        initUltimateBar();
+    }
+
+    protected int COLOR_BLACK = 0X001;//状态栏字体为黑色
+    protected int COLOR_WHITE = 0X002;//状态栏字体为白色
+
+    private void initUltimateBar() {
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setImmersionBar();
+        if (barColor()==COLOR_WHITE){
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);//设置状态栏字体颜色为浅色
+        }else {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//设置状态栏字体颜色为深色
+        }
+    }
+
+    protected int barColor(){
+        return COLOR_BLACK;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
-
         //解除Messenger注册
         Messenger.getDefault().unregister(viewModel);
         //解除ViewModel生命周期感应

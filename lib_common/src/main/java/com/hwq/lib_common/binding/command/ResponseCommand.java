@@ -4,7 +4,7 @@ package com.hwq.lib_common.binding.command;
 import io.reactivex.functions.Function;
 
 /**
- * About : kelin的ResponseCommand
+ * Created by king on 2019.1.11
  * 执行的命令事件转换
  */
 public class ResponseCommand<T, R> {

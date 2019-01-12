@@ -14,7 +14,11 @@ import java.util.List;
 
 
 /**
- * About : kelin的Messenger
+ *
+ * 引入messenger最主要的目的就实现ViewModel和ViewModel的通信，也可以用做View和ViewModel的通信，但是并不推荐这样做。
+ * ViewModel主要是用来处理业务和数据的，每个ViewModel都有相应的业务职责，但是在业务复杂的情况下，可能存在交叉业务，
+ * 这时候就需要ViewModel和ViewModel交换数据和通信，这时候一个全局的消息通道就很重要的
+ *
  */
 public class Messenger {
 
