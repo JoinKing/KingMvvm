@@ -2,7 +2,7 @@ package com.hwq.lib_common.widget.refreshlayout;
 
 import com.hwq.lib_common.widget.refreshlayout.view.RefreshLayout;
 
-public abstract class RefreshListenerAdapter implements PullListener {
+public abstract class  RefreshListenerAdapter implements PullListener {
         @Override
         public void onPullingDown(RefreshLayout refreshLayout, float fraction) {
         }

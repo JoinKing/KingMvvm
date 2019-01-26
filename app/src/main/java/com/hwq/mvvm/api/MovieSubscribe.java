@@ -16,7 +16,7 @@ import io.reactivex.Observable;
 
 /**
  *
- * 建议：把功能模块来分别存放不同的请求方法，比如登录注册类LoginSubscribe、电影类MovieSubscribe
+ * 建议：把功能模块来分别存放不同的请求方法
  */
 
 public class MovieSubscribe {

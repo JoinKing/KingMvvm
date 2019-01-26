@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="filesVM"
+            type="com.hwq.mvvm.openfile.FileListModel"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.hwq.mvvm.openfile.FileListActivity">
+        <TextView
+            android:textSize="18dp"
+            android:background="@color/color_f3f3f3"
+            android:textColor="@color/Green"
+            android:gravity="center"
+            android:text="本地文件"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <!-- TODO: Update blank fragment layout -->
+        <ExpandableListView
+            app:setAdapter="@{filesVM.adapter}"
+            android:divider="@null"
+            android:groupIndicator="@null"
+            android:id="@+id/elUsers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</layout>

@@ -323,7 +323,7 @@ public class Luban {
         return compress(filePath, thumb, thumbW, thumbH, angle, (long) size);
     }
 
-    private File firstCompress(@NonNull File file) {
+    public File firstCompress(@NonNull File file) {
         int minSize = 60;
         int longSide = 720;
         int shortSide = 1280;

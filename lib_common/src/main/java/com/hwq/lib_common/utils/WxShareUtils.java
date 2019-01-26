@@ -102,7 +102,7 @@ public class WxShareUtils {
         msg.title = title;
         msg.description = info;
         Bitmap thumb = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.customactivityoncrash_error_image);
+                R.drawable.error_image);
         msg.setThumbImage(thumb);
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = String.valueOf(System.currentTimeMillis());

@@ -14,8 +14,6 @@ import android.view.View;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.hwq.lib_common.bus.Messenger;
 import com.hwq.lib_common.utils.FixMemLeak;
-import com.hwq.lib_common.utils.KLog;
-import com.hwq.lib_common.utils.KeyBoardUtils;
 import com.hwq.lib_common.utils.MaterialDialogUtils;
 import com.hwq.lib_common.utils.UltimateBar;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;

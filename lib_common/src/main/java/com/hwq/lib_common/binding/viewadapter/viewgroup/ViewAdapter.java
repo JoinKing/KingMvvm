@@ -7,7 +7,8 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import me.tatarka.bindingcollectionadapter2.ItemBinding;
+import com.hwq.lib_common.binding.adapter.ItemBinding;
+
 
 /**
  * Created by king on 2018.12.21

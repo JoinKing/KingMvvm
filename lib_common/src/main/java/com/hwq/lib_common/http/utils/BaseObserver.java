@@ -32,9 +32,6 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
 
     @Override
     public void onError(Throwable e) {
-        KLog.e(e.getMessage());
-        // todo error somthing
-
         if (e instanceof ResponseThrowable) {
             onError((ResponseThrowable) e);
         } else {
@@ -42,23 +39,26 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
         }
     }
 
-
+    /**
+     * 开始加载弹窗
+     */
     @Override
     public void onStart() {
         super.onStart();
-        // todo some common as show loadding  and check netWork is NetworkAvailable
         // if  NetworkAvailable no !   must to call onCompleted
         if (!NetworkUtil.isNetworkAvailable(Utils.getContext())) {
-            Toast.makeText(Utils.getContext(), "无网络，读取缓存数据", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShort("无网络，读取缓存数据");
             onComplete();
         }
 
     }
 
+    /**
+     * 关闭加载弹窗
+     */
     @Override
     public void onComplete() {
 //        Toast.makeText(context, "http is Complete", Toast.LENGTH_SHORT).show();
-        // todo some common as  dismiss loadding
     }
 
 

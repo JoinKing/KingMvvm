@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hwq.lib_common" >
+    package="com.hwq.lib_common">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application>
-        <activity android:name=".base.ContainerActivity"></activity>
+        <activity android:name=".base.ContainerActivity" />
         <activity
             android:name=".crash.DefaultErrorActivity"
             android:process=":error_activity" />
@@ -14,5 +16,10 @@
             android:authorities="${applicationId}.customactivityoncrashinitprovider"
             android:exported="false"
             android:initOrder="101" />
+
+        <activity android:name=".widget.chat.ChatActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait"/>
     </application>
+
 </manifest>

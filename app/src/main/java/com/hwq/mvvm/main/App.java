@@ -28,7 +28,7 @@ public class App extends BaseApplication {
         initCrash();
         //内存泄漏检测
         if (!LeakCanary.isInAnalyzerProcess(this)) {
-            refWatcher = LeakCanary.install(this);
+//            refWatcher = LeakCanary.install(this);
         }
         Map<String, String> headers = new HashMap<>();
         headers.put("user-agent", "Android");

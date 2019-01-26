@@ -12,6 +12,7 @@ import android.view.View;
 import com.hwq.lib_common.base.BaseViewModel;
 import com.hwq.lib_common.binding.command.BindingAction;
 import com.hwq.lib_common.binding.command.BindingCommand;
+import com.hwq.lib_common.rxpermissions.RxPermissions;
 import com.hwq.lib_common.utils.KLog;
 import com.hwq.lib_common.utils.ToastUtils;
 import com.hwq.mvvm.MainActivity;
@@ -20,7 +21,6 @@ import com.hwq.mvvm.live.business.FspEvents;
 import com.hwq.mvvm.live.business.FspManager;
 
 import com.hwq.mvvm.live.main.LiveMainActivity;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 
 import org.greenrobot.eventbus.EventBus;
@@ -42,10 +42,7 @@ public class LiveViewModel extends BaseViewModel{
     public BindingCommand commandLogin = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
-
             login();
-
         }
     });
 

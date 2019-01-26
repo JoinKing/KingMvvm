@@ -5,7 +5,6 @@ import android.app.Application;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.hwq.lib_common.http.utils.RetrofitClient;
 import com.hwq.lib_common.utils.Utils;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -24,10 +23,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //微信
-
         setApplication(this);
-        //ARouter路由
-        ARouter.init(this);
     }
 
     /**

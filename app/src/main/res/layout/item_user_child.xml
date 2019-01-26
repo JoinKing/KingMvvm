@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="child"
+            type="com.hwq.lib_common.utils.searchfile.FileBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginRight="@dimen/dp_15"
+        android:clickable="true"
+        app:onClickCommand="@{child.childOnclick}"
+        app:onLongClickCommand="@{child.longOnclick}"
+        android:background="@color/white"
+        android:id="@+id/clChild"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivHead"
+            android:src="@mipmap/icon_voice"
+            android:layout_marginLeft="@dimen/dp_10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:adjustViewBounds="true"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40" />
+        <TextView
+            android:layout_marginRight="@dimen/dp_15"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/dp_10"
+            android:id="@+id/tvTitle"
+            android:layout_marginLeft="@dimen/dp_60"
+            app:layout_constraintLeft_toLeftOf="@id/ivHead"
+            app:layout_constraintBottom_toBottomOf="@id/ivHead"
+            app:layout_constraintTop_toTopOf="@id/ivHead"
+            android:textColor="@color/default_action_color"
+            android:text="@{child.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

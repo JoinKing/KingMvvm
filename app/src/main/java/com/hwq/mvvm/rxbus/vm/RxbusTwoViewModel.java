@@ -3,6 +3,7 @@ package com.hwq.mvvm.rxbus.vm;
 import android.app.Application;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.hwq.lib_common.base.BaseViewModel;
 import com.hwq.lib_common.binding.command.BindingAction;
@@ -21,16 +22,24 @@ public class RxbusTwoViewModel extends BaseViewModel {
     public BindingCommand post = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
             RxBus.getDefault().post(new RxBusEvent("我是RxTwoActivity发送过来的消息"));
 
         }
     });
 
+    public View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RxBus.getDefault().post(new RxBusEvent("我是RxTwoActivity发送过来的消息"));
+        }
+    };
+
     public RxbusTwoViewModel(@NonNull Application application) {
         super(application);
     }
+
     private Disposable disposable;
+
     @Override
     public void registerRxBus() {
         super.registerRxBus();

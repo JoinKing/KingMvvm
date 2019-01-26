@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.hwq.lib_common.bus.RxBus;
 import com.hwq.lib_common.http.utils.RetrofitClient;
+import com.hwq.lib_common.utils.ToastUtils;
 import com.hwq.lib_common.wxapi.api.WxSubscribe;
 import com.hwq.lib_common.wxapi.entity.WxInfoBean;
 import com.hwq.lib_common.wxapi.entity.WxTokenBean;
@@ -37,7 +38,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
         iwxapi = WXAPIFactory.createWXAPI(this, RetrofitClient.APP_ID, true);
         //接收到分享以及登录的intent传递handleIntent方法，处理结果
         iwxapi.handleIntent(getIntent(), this);
-
     }
 
 
@@ -59,11 +59,11 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
                     getUserInfo(code);
                     break;
                 case BaseResp.ErrCode.ERR_AUTH_DENIED://用户拒绝授权
-                    Toast.makeText(this, "用户拒绝授权", Toast.LENGTH_SHORT).show();
+                    ToastUtils.showShort("用户拒绝授权");
                     finish();
                     break;
                 case BaseResp.ErrCode.ERR_USER_CANCEL://用户取消
-                    Toast.makeText(this, "用户取消", Toast.LENGTH_SHORT).show();
+                    ToastUtils.showShort("用户取消");
                     finish();
                     break;
                 default:

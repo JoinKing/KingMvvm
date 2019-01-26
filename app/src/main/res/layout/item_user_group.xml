@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="group"
+            type="com.hwq.mvvm.openfile.entity.FileEntity"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:paddingTop="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/ivSelect"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            app:onClickCommand="@{group.groupOnclick}"
+            app:layout_constraintLeft_toRightOf="@id/ivSelect"
+            android:id="@+id/tvTitle"
+            android:textStyle="bold"
+            android:textSize="@dimen/dp_30"
+            android:textColor="@color/default_action_color"
+            android:gravity="center_vertical"
+            android:text="@{group.title}"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40" />
+    </android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
+
+</layout>

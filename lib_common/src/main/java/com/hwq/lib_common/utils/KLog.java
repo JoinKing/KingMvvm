@@ -12,7 +12,7 @@ public class KLog {
 
     private static boolean IS_SHOW_LOG = false;
 
-    private static final String DEFAULT_MESSAGE = "execute";
+    private static final String DEFAULT_MESSAGE = "KING";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final int JSON_INDENT = 4;
 

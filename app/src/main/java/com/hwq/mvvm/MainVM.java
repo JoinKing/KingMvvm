@@ -4,8 +4,11 @@ import android.app.Application;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
 
 import com.hwq.lib_common.base.BaseViewModel;
 import com.hwq.lib_common.binding.command.BindingAction;
@@ -21,6 +24,7 @@ import com.hwq.mvvm.api.MovieSubscribe;
 import com.hwq.mvvm.bean.DataBean;
 import com.hwq.mvvm.bean.LoginModel;
 import com.hwq.mvvm.bean.StrBean;
+import com.trello.rxlifecycle2.LifecycleProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +35,10 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 
 public class MainVM extends BaseViewModel {
+
+    public ObservableInt visible = new ObservableInt(View.VISIBLE);
+
+
     public static String INDEX = "file:///android_asset/dist/index.html";
     public ObservableField<String> text = new ObservableField<>("测试");
     public ObservableField<String> url = new ObservableField<>(INDEX);
@@ -245,6 +253,13 @@ public class MainVM extends BaseViewModel {
         super.onAny(owner, event);
         KLog.e("onAny");
 
+
+
     }
 
+    @Override
+    public void injectLifecycleProvider(LifecycleProvider lifecycle) {
+        super.injectLifecycleProvider(lifecycle);
+
+    }
 }
