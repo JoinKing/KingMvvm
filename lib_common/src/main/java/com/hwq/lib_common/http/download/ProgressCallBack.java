@@ -21,7 +21,7 @@ import okhttp3.ResponseBody;
  * Created by king on 2018.12.21
  */
 
-public abstract class ProgressCallBack<T> {
+public abstract class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ProgressCallBack<T> {
 
     private String destFileDir; // 本地文件存放路径
     private String destFileName; // 文件名
@@ -92,7 +92,7 @@ public abstract class ProgressCallBack<T> {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                progress(progressLoadBean.getBytesLoaded(), progressLoadBean.getTotal());
+
                             }
                         });
                     }

@@ -17,8 +17,21 @@ import okhttp3.RequestBody;
 
 public class UploadSubscribe {
 
-    public static void upLoading(Map<String, String> params,List<File> fileList ,String fileType,BaseObserver<BaseResponse> observer){
 
+    public static void upLoad(Map<String, String> params,File file ,String fileType,BaseObserver<BaseResponse> observer){
+
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("test", file.getName(), requestBody);
+        Observable<BaseResponse> observable  =   RetrofitClient.builder()
+                .setIsOtherUrl(true)
+                .setOtherUrl("http://192.168.200.77:8080")
+                .apply()
+                .create(Api.class)
+                .postFile(params,part);
+        RetrofitClient.builder().toSubscribe(observable, observer);
+    }
+
+    public static void upLoading(Map<String, String> params,List<File> fileList ,String fileType,BaseObserver<BaseResponse> observer){
         Map<String, RequestBody> params1 = new HashMap<>();
         params1.put("resourceType",convertToRequestBody(params.get("resourceType")));
         params1.put("isNeedShow",convertToRequestBody(params.get("isNeedShow")));
@@ -48,7 +61,7 @@ public class UploadSubscribe {
         List<MultipartBody.Part> parts = new ArrayList<>(files.size());
         for (File file : files) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(fileType), file);
-            MultipartBody.Part part = MultipartBody.Part.createFormData("multipartFiles", file.getName(), requestBody);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("multipart/form-data", file.getName(), requestBody);
             parts.add(part);
         }
         return parts;

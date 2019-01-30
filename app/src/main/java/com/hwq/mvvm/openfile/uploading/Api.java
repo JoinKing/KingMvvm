@@ -17,5 +17,7 @@ public  interface Api {
     @Multipart
     @POST("CDCT_RCH_CI/commonFileUpload")  //这里是自己post文件的地址
     Observable<BaseResponse> postGoodsReturnPostEntitys(@QueryMap Map<String, String> map, @Part List<MultipartBody.Part> parts);
-
+    @Multipart
+    @POST("CDCT_RCH_CI/commonFileUpload")  //这里是自己post文件的地址
+    Observable<BaseResponse> postFile(@QueryMap Map<String, String> map, @Part MultipartBody.Part part);
 }

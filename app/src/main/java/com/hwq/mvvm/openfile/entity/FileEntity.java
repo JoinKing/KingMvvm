@@ -12,6 +12,7 @@ import java.util.List;
 
 public class FileEntity extends BaseObservable {
     private String title;
+    private String fileType;
     private ObservableArrayList<FileBean> child;
 
     public BindingCommand groupOnclick = new BindingCommand(new BindingAction() {
@@ -22,6 +23,14 @@ public class FileEntity extends BaseObservable {
 //            KLog.e(child.toString());
         }
     });
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
 
     @Bindable
     public String getTitle() {

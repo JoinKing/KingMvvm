@@ -46,7 +46,8 @@
         <activity android:name=".cookbar.CookBarActivity" />
         <activity android:name=".address.AddressActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".openfile.FileListActivity"/>
+        <activity android:name=".openfile.FileListActivity" />
+        <activity android:name=".openfile.FileFragmen"></activity>
     </application>
 
 </manifest>

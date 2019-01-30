@@ -62,6 +62,7 @@ public class MimeUtils {
             while (cursor.moveToNext()) {
                 FileBean bean = new FileBean();
                 String path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA));
+                bean.setFileType(getMineType(type));
                 bean.setName(path.substring(path.lastIndexOf("/") + 1));
                 bean.setSize(cursor.getLong(cursor.getColumnIndexOrThrow(
                         MediaStore.Files.FileColumns.SIZE)));
@@ -92,6 +93,7 @@ public class MimeUtils {
             while (cursor.moveToNext()) {
                 FileBean bean = new FileBean();
                 String path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DATA));
+                bean.setFileType(getMineType(type));
                 bean.setName(path.substring(path.lastIndexOf("/") + 1));
                 bean.setSize(cursor.getLong(cursor.getColumnIndexOrThrow(
                         MediaStore.Files.FileColumns.SIZE)));

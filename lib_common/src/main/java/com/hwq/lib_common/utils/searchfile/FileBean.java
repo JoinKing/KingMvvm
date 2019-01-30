@@ -21,8 +21,9 @@ import java.io.File;
  */
 public class FileBean implements Observable {
     private String name;
-    private long size;
+    private String fileType;
     private String path;
+    private long size;
     public BindingCommand childOnclick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
@@ -31,6 +32,7 @@ public class FileBean implements Observable {
             bundle.putString("tempPath",Environment.getExternalStorageDirectory().getPath());
             Intent intent = new Intent(Utils.getContext(), ContainerActivity.class);
             intent.putExtra(ContainerActivity.FRAGMENT, "com.hwq.mvvm.openfile.FileFragment");
+//            intent.putExtra(ContainerActivity.FRAGMENT, "com.hwq.mvvm.openfile.BlankFragment");
             if (bundle != null) {
                 intent.putExtra(ContainerActivity.BUNDLE, bundle);
             }
@@ -43,11 +45,19 @@ public class FileBean implements Observable {
         @Override
         public void call() {
             EventShowProgress progress = new EventShowProgress();
-            progress.fileType = "pdf";
+            progress.fileType = fileType;
             progress.file = new File(path);
             RxBus.getDefault().post(progress);
         }
     });
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
 
     @Bindable
     public String getName() {

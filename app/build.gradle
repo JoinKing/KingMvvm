@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.hwq.mvvm"
@@ -10,6 +10,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构  ['arm64-v8a']
+            abiFilters 'armeabi', "armeabi-v7a", 'x86'
+        }
     }
     buildTypes {
         release {
@@ -53,4 +58,6 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["leakcanary-android"]
     releaseImplementation rootProject.ext.dependencies["leakcanary-android"]
     testImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+
+    api 'com.github.barteksc:android-pdf-viewer:2.6.1'
 }

@@ -1,14 +1,9 @@
 package com.hwq.lib_common.http.utils;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.hwq.lib_common.http.BaseResponse;
 import com.hwq.lib_common.http.ExceptionHandle;
 import com.hwq.lib_common.http.NetworkUtil;
 import com.hwq.lib_common.http.ResponseThrowable;
-import com.hwq.lib_common.utils.KLog;
 import com.hwq.lib_common.utils.ToastUtils;
 import com.hwq.lib_common.utils.Utils;
 
@@ -58,7 +53,7 @@ public abstract class BaseObserver<T> extends DisposableObserver<T> {
      */
     @Override
     public void onComplete() {
-//        Toast.makeText(context, "http is Complete", Toast.LENGTH_SHORT).show();
+
     }
 
 

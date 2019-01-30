@@ -13,6 +13,7 @@ import com.hwq.lib_common.utils.KLog;
 import com.hwq.mvvm.R;
 import com.hwq.mvvm.BR;
 import com.hwq.mvvm.databinding.FragmentFileBinding;
+import com.hwq.mvvm.openfile.vm.FileViewModel;
 import com.tencent.smtt.sdk.TbsReaderView;
 
 
@@ -35,14 +36,15 @@ public class FileFragment extends BaseFragment<FragmentFileBinding,FileViewModel
     public void initData() {
         tbsReaderView = new TbsReaderView(getActivity(),this);
         binding.tbRelay.addView(tbsReaderView,new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-        Bundle intent = getArguments();
-        if (null!=intent){
-            boolean result = tbsReaderView.preOpen(parseFormat(intent.getString("filePath")), false);
+        Bundle bundle = getArguments();
+        if (null!=bundle){
+            boolean result = tbsReaderView.preOpen(parseFormat(bundle.getString("filePath")), false);
             if (result){
-                tbsReaderView.openFile(intent);
+                tbsReaderView.openFile(bundle);
             }
         }
-        KLog.e("xxxxx"+intent.getString("filePath"));
+        KLog.e("xxxxx"+bundle.getString("filePath"));
+        KLog.e("xxxxx"+bundle.getString("tempPath"));
     }
 
 
@@ -53,6 +55,12 @@ public class FileFragment extends BaseFragment<FragmentFileBinding,FileViewModel
     @Override
     public void onDestroy() {
         super.onDestroy();
+        tbsReaderView.onStop();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
         tbsReaderView.onStop();
     }
 

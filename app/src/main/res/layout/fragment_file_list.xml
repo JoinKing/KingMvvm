@@ -4,7 +4,7 @@
     <data>
         <variable
             name="filesVM"
-            type="com.hwq.mvvm.openfile.FileListModel"/>
+            type="com.hwq.mvvm.openfile.vm.FileListModel"/>
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

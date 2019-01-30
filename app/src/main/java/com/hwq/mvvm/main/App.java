@@ -12,6 +12,7 @@ import com.hwq.mvvm.R;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,7 @@ public class App extends BaseApplication {
         if (!LeakCanary.isInAnalyzerProcess(this)) {
 //            refWatcher = LeakCanary.install(this);
         }
+
         Map<String, String> headers = new HashMap<>();
         headers.put("user-agent", "Android");
         headers.put("Content-Type", "application/json");
@@ -49,6 +51,10 @@ public class App extends BaseApplication {
         api.registerApp(RetrofitClient.APP_ID);
 
 
+        QbSdk.initX5Environment(getApplicationContext(),  cb);
+
+
+
     }
 
 
@@ -66,4 +72,24 @@ public class App extends BaseApplication {
 //                .eventListener(new YourCustomEventListener()) //崩溃后的错误监听
                 .apply();
     }
+
+    /**
+     * 搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+     */
+    QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+
+        @Override
+        public void onViewInitFinished(boolean arg0) {
+            //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+            KLog.e(arg0);
+
+        }
+
+        @Override
+        public void onCoreInitFinished() {
+
+        }
+    };
+
+
 }
