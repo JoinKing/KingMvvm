@@ -17,6 +17,12 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="ViewLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/viewLineColor</item>
+    </style>
+
     <!--地址选择-->
     <style name="bottom_dialog" parent="android:style/Theme.Dialog">
         <!-- 设置无边框 -->

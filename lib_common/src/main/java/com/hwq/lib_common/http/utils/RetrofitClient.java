@@ -37,9 +37,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitClient {
 
-    //服务端根路径
+    //服务端根路径（默认url，使用isOtherUrl后自动默认恢复该url）
     public String baseUrl = "";
-    //是否手动url
+    //是否手动设置其他url
     private boolean isOtherUrl;
     private String otherUrl;
     //超时时间
