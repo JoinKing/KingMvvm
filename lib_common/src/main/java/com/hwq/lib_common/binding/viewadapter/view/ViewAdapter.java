@@ -108,16 +108,4 @@ public class ViewAdapter {
         });
     }
 
-//    @BindingAdapter({"onTouchCommand"})
-//    public static void onTouchCommand(View view, final ResponseCommand<MotionEvent, Boolean> onTouchCommand) {
-//        view.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (onTouchCommand != null) {
-//                    return onTouchCommand.execute(event);
-//                }
-//                return false;
-//            }
-//        });
-//    }
 }

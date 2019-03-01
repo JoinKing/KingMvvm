@@ -41,6 +41,7 @@ public class RetrofitClient {
     public String baseUrl = "";
     //是否手动设置其他url
     private boolean isOtherUrl;
+    private boolean DEBUG;
     private String otherUrl;
     //超时时间
     private int DEFAULT_TIMEOUT = 10;
@@ -79,6 +80,10 @@ public class RetrofitClient {
 
     public RetrofitClient setIsOtherUrl(boolean isOtherUrl) {
         this.isOtherUrl = isOtherUrl;
+        return this;
+    }
+    public RetrofitClient setDEBUG(boolean DEBUG) {
+        this.DEBUG = DEBUG;
         return this;
     }
     public RetrofitClient setOtherUrl(String otherUrl) {
@@ -162,9 +167,12 @@ public class RetrofitClient {
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
                 .addInterceptor(new LoggingInterceptor
                         .Builder()//构建者模式
-                        .loggable(BuildConfig.DEBUG) //是否开启日志打印
+                        .loggable(DEBUG) //是否开启日志打印
                         .setLevel(Level.BASIC) //打印的等级
                         .log(Platform.INFO) // 打印类型
+                        .request("Request") // request的Tag
+                        .response("Response")// Response的Tag
+                        .addHeader("log-header", "I am the log request header.") // 添加打印头, 注意 key 和 value 都不能是中文
                         .addHeader("user-agent", "Android")
                         .addHeader("Content-Type", "application/json")
                         .build()

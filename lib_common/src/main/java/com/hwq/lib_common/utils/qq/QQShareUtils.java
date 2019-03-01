@@ -1,4 +1,4 @@
-package com.hwq.lib_common.utils;
+package com.hwq.lib_common.utils.qq;
 
 import android.app.Activity;
 import android.os.Bundle;
