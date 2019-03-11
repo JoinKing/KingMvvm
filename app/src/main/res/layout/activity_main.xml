@@ -14,6 +14,12 @@
         android:orientation="vertical"
         tools:context=".MainActivity111">
 
+        <include
+            android:id="@+id/include"
+            layout="@layout/layout_toolbar"
+            binding:titleViewModel="@{mainVM.titleViewModel}"
+            />
+
         <TextView
             android:id="@+id/textView"
             android:textSize="50dp"

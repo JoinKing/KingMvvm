@@ -173,8 +173,6 @@ public class RetrofitClient {
                         .request("Request") // request的Tag
                         .response("Response")// Response的Tag
                         .addHeader("log-header", "I am the log request header.") // 添加打印头, 注意 key 和 value 都不能是中文
-                        .addHeader("user-agent", "Android")
-                        .addHeader("Content-Type", "application/json")
                         .build()
                 )
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)

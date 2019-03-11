@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 /**
  * Created by king
  * @date 2018.11.14
+ * @desc Remove sliding ViewPager
  */
 
 public class NoScrollViewPager extends ViewPager {

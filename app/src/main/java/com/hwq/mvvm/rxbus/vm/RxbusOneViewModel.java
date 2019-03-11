@@ -128,7 +128,7 @@ public class RxbusOneViewModel extends BaseViewModel {
     @Override
     public void registerRxBus() {
         super.registerRxBus();
-       Disposable disposable =  RxBus.getDefault().toObservable(RxBusEvent.class).subscribe(new Consumer<RxBusEvent>() {
+       disposable =  RxBus.getDefault().toObservable(RxBusEvent.class).subscribe(new Consumer<RxBusEvent>() {
             @Override
             public void accept(RxBusEvent rxBusEvent) throws Exception {
                 content.set(rxBusEvent.toString());

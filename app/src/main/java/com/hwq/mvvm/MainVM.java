@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -19,6 +20,8 @@ import com.hwq.lib_common.http.utils.BaseObserver;
 import com.hwq.lib_common.http.utils.RetrofitClient;
 import com.hwq.lib_common.utils.KLog;
 import com.hwq.lib_common.utils.RxUtils;
+import com.hwq.lib_common.utils.ToastUtils;
+import com.hwq.lib_common.widget.title.TitleViewModel;
 import com.hwq.mvvm.api.ApiService;
 import com.hwq.mvvm.api.MovieSubscribe;
 import com.hwq.mvvm.bean.DataBean;
@@ -45,8 +48,33 @@ public class MainVM extends BaseViewModel {
     public ObservableField<String> jsMethod = new ObservableField<>();
     public ObservableField<AndroidFun> funAndrodi = new ObservableField<>(new AndroidFun(getApplication()));
 
+
+    //include绑定一个通用的TitleViewModel
+    public TitleViewModel titleViewModel;
+
     public MainVM(@NonNull Application application) {
         super(application);
+    }
+
+    public void setTitleViewModel(TitleViewModel titleViewModel) {
+        this.titleViewModel = titleViewModel;
+        //初始化标题栏
+        titleViewModel.rightTextVisibility.set(View.VISIBLE);
+        titleViewModel.rightText.set("更多");
+        if (TextUtils.isEmpty("")) {
+            //ID为空是新增
+            titleViewModel.titleText.set("表单提交");
+        } else {
+            //ID不为空是修改
+            titleViewModel.titleText.set("表单编辑");
+        }
+        //右边文字的点击事件
+        titleViewModel.rightTextOnClickCommand = new BindingCommand(new BindingAction() {
+            @Override
+            public void call() {
+                ToastUtils.showShort("更多");
+            }
+        });
     }
 
 
@@ -118,13 +146,13 @@ public class MainVM extends BaseViewModel {
     }
 
     public void login() {
-        Map<String,String>parms = new HashMap<>();
+        Map<String, String> parms = new HashMap<>();
         parms.put("MSH.1", "user");
         parms.put("MSH.2", "passwordLogin");
         parms.put("tel", "");
         parms.put("password", "");
         MovieSubscribe.login(parms, new BaseObserver<BaseResponse<DataBean>>() {
-//            @Override
+            //            @Override
 //            public void onNext(BaseResponse<DataBean> stringBaseResponse) {
 //                super.onNext(stringBaseResponse);
 //            }
@@ -147,7 +175,6 @@ public class MainVM extends BaseViewModel {
         super.onCreate();
 //        requestNetWork();
     }
-
 
 
     void requestNetWork() {
@@ -173,11 +200,12 @@ public class MainVM extends BaseViewModel {
 
             @Override
             public void onError(ResponseThrowable e) {
-                text.set(e.getMessage()+e.message);
+                text.set(e.getMessage() + e.message);
             }
+
             @Override
             public void onResult(BaseResponse<LoginModel> loginModelBaseResponse) {
-                text.set(loginModelBaseResponse.getMessage()+loginModelBaseResponse.getCode());
+                text.set(loginModelBaseResponse.getMessage() + loginModelBaseResponse.getCode());
             }
         });
 //        MovieSubscribe.getText(new DisposableObserver<BaseResponse<StrBean>>() {
@@ -221,7 +249,7 @@ public class MainVM extends BaseViewModel {
                     @Override
                     public void accept(ResponseThrowable throwable) throws Exception {
 
-                        Log.e("aaa", "accept: "+throwable );
+                        Log.e("aaa", "accept: " + throwable);
 
                     }
                 });
@@ -252,7 +280,6 @@ public class MainVM extends BaseViewModel {
     public void onAny(LifecycleOwner owner, Lifecycle.Event event) {
         super.onAny(owner, event);
         KLog.e("onAny");
-
 
 
     }

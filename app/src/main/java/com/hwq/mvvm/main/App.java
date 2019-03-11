@@ -29,7 +29,7 @@ public class App extends BaseApplication {
         initCrash();
         //内存泄漏检测
         if (!LeakCanary.isInAnalyzerProcess(this)) {
-//            refWatcher = LeakCanary.install(this);
+            refWatcher = LeakCanary.install(this);
         }
 
         Map<String, String> headers = new HashMap<>();
@@ -49,8 +49,6 @@ public class App extends BaseApplication {
 
         api = WXAPIFactory.createWXAPI(this, RetrofitClient.APP_ID, true);
         api.registerApp(RetrofitClient.APP_ID);
-
-
         QbSdk.initX5Environment(getApplicationContext(),  cb);
 
 
