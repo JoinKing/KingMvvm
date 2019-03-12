@@ -14,11 +14,12 @@
     <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/dp_70"
         android:background="@color/white"
         app:contentInsetStart="0dp">
 
         <RelativeLayout
+            android:layout_marginTop="@dimen/dp_15"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

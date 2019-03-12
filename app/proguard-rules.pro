@@ -35,7 +35,7 @@
 #-------------------------------------------MVVMHabit混淆规则----------------------------------------------
 #---------------------------------1.实体类---------------------------------
 
--keep class me.goldze.mvvmhabit.http.BaseResponse { *; }
+-keep class com.hwq.lib_common.http.BaseResponse { *; }
 
 #-------------------------------------------------------------------------
 
@@ -121,8 +121,8 @@
 -dontwarn om.afollestad.materialdialogs.**
 
 #=====================bindingcollectionadapter=====================
--keep class me.tatarka.bindingcollectionadapter.** { *; }
--dontwarn me.tatarka.bindingcollectionadapter.**
+-keep class com.hwq.lib_common.** { *; }
+-dontwarn com.hwq.lib_common.**
 
 
 #---------------------------------------------------------------------------

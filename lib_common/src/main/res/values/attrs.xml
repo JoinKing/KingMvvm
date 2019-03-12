@@ -2,7 +2,7 @@
 
     <!-- require boolean value to decide whether requestFocus for view. -->
     <attr name="requestFocus" format="boolean" />
-    <!-- require ItemView {@link me.tatarka.bindingcollectionadapter.ItemView} or ItemViewSelector {{@link me.tatarka.bindingcollectionadapter.ItemViewSelector}.} -->
+    <!-- require ItemView {@link com.hwq.lib_common.ItemView} or ItemViewSelector {{@link com.hwq.lib_common.ItemViewSelector}.} -->
     <attr name="itemView" format="reference" />
     <!-- require List<ViewModel> bind to ItemView to presentation.-->
     <attr name="items" format="reference" />
@@ -63,7 +63,7 @@
 
 
     <declare-styleable name="AdapterView">
-        <!-- require ItemView {@link me.tatarka.bindingcollectionadapter.ItemView} or ItemViewSelector {{@link me.tatarka.bindingcollectionadapter.ItemViewSelector}.} -->
+        <!-- require ItemView {@link com.hwq.lib_common.ItemView} or ItemViewSelector {{@link com.hwq.lib_common.ItemViewSelector}.} -->
         <attr name="itemView" />
         <!-- require List<ViewModel> bind to ItemView to presentation.-->
         <attr name="items" />
@@ -108,7 +108,7 @@
 
 
     <declare-styleable name="ViewGroup">
-        <!-- require ItemView {@link me.tatarka.bindingcollectionadapter.ItemView} or ItemViewSelector {{@link me.tatarka.bindingcollectionadapter.ItemViewSelector}.} -->
+        <!-- require ItemView {@link com.hwq.lib_common.ItemView} or ItemViewSelector {{@link com.hwq.lib_common.ItemViewSelector}.} -->
         <attr name="itemView" />
         <!-- require List<ViewModel> bind to ItemView to presentation.-->
         <attr name="observableList" format="reference" />
@@ -139,7 +139,7 @@
     </declare-styleable>
 
     <declare-styleable name="ViewPager">
-        <!-- require ItemView {@link me.tatarka.bindingcollectionadapter.ItemView} or ItemViewSelector {{@link me.tatarka.bindingcollectionadapter.ItemViewSelector}.} -->
+        <!-- require ItemView {@link com.hwq.lib_common.ItemView} or ItemViewSelector {{@link com.hwq.lib_common.ItemViewSelector}.} -->
         <attr name="itemView" />
         <!-- require List<ViewModel> bind to ItemView to presentation.-->
         <attr name="items" />

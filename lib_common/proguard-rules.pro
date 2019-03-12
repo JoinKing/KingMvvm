@@ -121,8 +121,8 @@
 -dontwarn om.afollestad.materialdialogs.**
 
 #=====================bindingcollectionadapter=====================
--keep class me.tatarka.bindingcollectionadapter.** { *; }
--dontwarn me.tatarka.bindingcollectionadapter.**
+-keep class com.hwq.lib_common.** { *; }
+-dontwarn com.hwq.lib_common.**
 
 
 #---------------------------------------------------------------------------
